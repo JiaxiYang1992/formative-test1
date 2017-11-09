@@ -1,0 +1,30 @@
+---
+title: "Formative Test Visualization"
+author: "HUDK4050"
+date: "11/9/2017"
+output: html_document
+---
+
+
+```{r, echo=FALSE}
+#Input your data processing steps here
+
+#Name your first data frame "D1" 
+
+D1 <- read.csv("formative1-results-DI.csv",header=TRUE)
+
+```
+
+## Students' Performance Visualization
+```{r, echo=FALSE}
+#Create a new code block, give it an appropriate title and input your visualization code.
+D2<-D1[,c(-1,-2)]
+
+D3<-as.data.frame(D2=="Yes")
+D3$correct<-rowSums(D3)
+D3$percentage<-D3$correct/14
+
+barplot(D3$percentage,names.arg = 1:29,main="Accuracy for Students' Performance in Formative Test 1")
+
+```
+
